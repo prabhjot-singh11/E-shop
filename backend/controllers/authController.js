@@ -16,6 +16,7 @@ const { restart } = require('nodemon');
 
 exports.registerUser = catchAsyncError (async (req,res,next)=>{
     const {name, email, password}= req.body;
+  
     const user  = await User.create({
         name,
         email,
@@ -25,12 +26,18 @@ exports.registerUser = catchAsyncError (async (req,res,next)=>{
             url:'ddrrrr'
         }
     })
+
     const token = user.getJwtToken();
     sendToken(user,200,res)
 })
 
 
+
 //login user
+
+//login user api/v1/login
+
+
 exports.loginUser = catchAsyncError(async(req,res,next)=>{
     const {email,password}= req.body;
 
@@ -301,3 +308,6 @@ exports.deleteUser = catchAsyncError(async(req,res,next)=>{
      user
     })
   })
+
+})
+

@@ -11,7 +11,12 @@ const{ isAuthenticateUser, authorizeRole }=  require('../middlewares/auth')
 
 
 
+
 router.route('/products').get( getProducts);
+
+router.route('/products').get(  getProducts);
+router.route('/product/new').post(NewProduct)
+
 router.route('/product/:id').get(getSingleProduct)
 router.route('/admin/product/new').post(isAuthenticateUser,authorizeRole('admin'), NewProduct);
 router.route('/admin/product/:id').put(isAuthenticateUser,authorizeRole('admin'), updateProdect).delete(isAuthenticateUser,deleteproduct);

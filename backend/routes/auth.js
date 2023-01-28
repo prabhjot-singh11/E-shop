@@ -20,6 +20,13 @@ router.route('/me/update').put(isAuthenticateUser, updateProfile)
 
 router.route('/admin/users').get(isAuthenticateUser,authorizeRole("admin") , allUsers)
 
+const { registerUser,loginUser} = require('../controllers/authController')
+
+
+router.route('/register').post(registerUser)
+router.route('/login').post(loginUser)
+
+
 router.route('/admin/user/:id')
 .get(isAuthenticateUser,authorizeRole("admin") , getUserDetails)
 .put(isAuthenticateUser,authorizeRole("admin"),updateUser)
