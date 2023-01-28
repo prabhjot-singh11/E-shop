@@ -8,7 +8,9 @@ const router = express.Router()
 const {getProducts, NewProduct,getSingleProduct,updateProdect}=  require("../controllers/productController")
 
 
-router.route('/products').get(getProducts);
+
+
+router.route('/products').get(  getProducts);
 router.route('/product/new').post(NewProduct)
 router.route('/product/:id').get(getSingleProduct)
 router.route('/admin/product/new').post(updateProdect);
